@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+int a[100];
+int l,i,c=0,t;
+cout<<"Enter the length of array : ";
+cin>>l;
+for(i=0;i<l;i++)
+{
+	cout<<"\nEnter "<<i+1<<" : ";
+	cin>>a[i];
+}
+cout<<"Enter target element : ";
+cin>>t;
+for(i=0;i<l;i++)
+{
+	if(a[i]==t)
+	{
+		cout<<"Entered element "<<t<<" is present at indexing "<<i;
+		c=1;
+		break;
+	}
+}
+if(c==0)
+cout<<"Entered target value not found";
+}
