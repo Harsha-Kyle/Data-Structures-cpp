@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int m,i;
+	cout<<"Armstrong number between 100 to 500 : \n";
+	for(i=100;i<=500;i++)
+	{
+		int n=i,r=0;
+		while(n>0)
+		{
+		m=n%10;
+		r=r+(m*m*m);
+		n=n/10;
+		}
+		if(i==r)
+		cout<<i<<endl;
+	}
+}
