@@ -1,0 +1,17 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int f=0,s=1,a,i;
+	int ft=f+s;
+	cout<<"Enter the value : ";
+	cin>>a;
+	cout<<"fibonacci : "<<f<<","<<s;
+	for(i=3;i<=a;i++)
+	{
+		cout<<","<<ft;
+		f=s;
+		s=ft;
+		ft=f+s;
+	}
+}
