@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+int fact(int f)
+{
+	if(f==1)
+	return 1;
+	else
+	{
+		return f*fact(f-1);
+	}
+}
+int main()
+{
+	int f=1;
+	cout<<"Enter the number : ";
+	cin>>f;
+	if(f<0)
+	cout<<"Negative not allowed";
+	else
+	cout<<"Factorial : "<<fact(f);
+}
