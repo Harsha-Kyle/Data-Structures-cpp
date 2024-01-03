@@ -1,0 +1,174 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+struct node
+{
+	int d;
+	struct node*n;
+};
+struct node *r=NULL;
+struct node *f=NULL;
+int iae(int a)
+{
+		if(f==NULL)
+	{
+		struct node*ne=(struct node*)malloc(sizeof(struct node));
+	     ne->d=a;
+	     ne->n=NULL;
+	     r=ne;
+	     f=ne;
+	}
+	else
+	{	
+	     struct node*ne=(struct node*)malloc(sizeof(struct node));
+	     ne->d=a;
+	     ne->n=NULL;
+	     r->n=ne;
+	     r=ne;
+	}
+	return 0;
+}
+int iab(int a)
+{
+	struct node *ne =(struct node*)malloc(sizeof(struct node));
+	ne->d=a;
+	ne->n=f;
+	f=ne;
+	return 0;
+};
+int iib(int a,int n)
+{
+	struct node *t =(struct node*)malloc(sizeof(struct node));
+//	struct node *t1=(struct node*)malloc(sizeof(struct node));
+	t=f;
+	int i;
+	for(i=0;i<n-1;i++)
+	{
+//		t=t1;
+		t=t->n;
+	}
+	struct node *ne =(struct node*)malloc(sizeof(struct node));
+	ne->d=a;
+	ne->n=t->n;
+	t->n=ne;
+}
+int dib(int n)
+{
+	struct node *t;
+	struct node *t1;
+	t1=f;
+	int i;
+	for(i=0;i<n-1;i++)
+	{
+		t=t1;
+		t1=t1->n;
+	}
+	t->n=t1->n;
+	free(t1);
+}
+int dab()
+{
+	if(f==NULL)
+	cout<<"Linked list is empty\n";
+	else
+	{
+		struct node *t;
+		cout<<"value deleted : "<<f->d<<endl;
+		t=f->n;
+		free(f);
+		f=t;
+		
+	}
+	return 0;
+}
+int dae()
+{
+	if(f==NULL)
+	cout<<"Queue is empty\n";
+	else
+	{
+		struct node*t;
+		t=r;
+		cout<<"Element removed : "<<r->d<<endl;
+		t=r->n;
+		free(r);
+		struct node *c;
+	c=f;
+		while(c->n!=t)
+	{
+		r=c;
+	    c=c->n;
+	}
+	cout<<r->d;
+	r->n=NULL;
+	}
+	if(f==NULL)
+	r=NULL;
+	return 0;
+}
+int display()
+{
+	struct node *t;
+	t=f;
+	if(f==NULL)
+	cout<<"Under flow\n";
+	else
+	{
+	while(t!=NULL)
+	{
+	    cout<<t->d<<"->";
+	    t=t->n;
+	}
+}
+	cout<<"NULL\n";
+	return 0;
+}
+int main()
+{
+	int i,a,rep=1;
+	while(rep==1)
+	{
+	
+	cout<<"Enter the operation \n Insert at end : 1\n Insert at beganing : 2\n Insert element at given position : 3\n Delete at end :4\n Delete at beganing :5\n Delete element at given position : 6\n Display :7\n Enter : ";
+	cin>>i;
+	cout<<"\n \n";
+	if(i==1)
+	{
+		cout<<"Enter the element to be added : ";
+		cin>>a;
+		iae(a);
+	}
+	else if(i==2)
+	{
+		cout<<"Enter the element to be added : ";
+		cin>>a;
+		iab(a);
+	}
+	else if(i==3)
+	{
+		int b;
+		cout<<"Enter the element to be added : ";
+		cin>>a;
+		cout<<"Enter the position to be added : ";
+		cin>>b;
+		iib(a,b);
+	}
+	else if(i==4)
+	dae();
+	else if(i==5)
+	dab();
+	else if(i==6)
+	{
+		cout<<"Enter the element position to be deleted : ";
+		cin>>a;
+		dib(a);
+	}
+	else if(i==7)
+	display();
+	else
+	cout<<"Entered invalied operation\n";
+    cout<<"Do you want to continue then enter 1 or enter 0 : ";
+	cin>>rep;	
+}
+cout<<"Thank you";
+}
